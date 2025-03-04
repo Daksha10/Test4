@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Verification</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input { padding: 10px; margin: 10px; width: 250px; }
+        button { padding: 10px 20px; background: blue; color: white; border: none; cursor: pointer; }
+        .error { color: red; }
+        .result { margin-top: 20px; text-align: left; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <h2>Phone Number Verification</h2>
+    <form method="POST">
+        <input type="text" name="phone_number" placeholder="Enter phone number" required>
+        <button type="submit">Verify</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if result %}
+        <div class="result">
+            <h3>Verification Results:</h3>
+            <p><strong>Number:</strong> {{ result.number }}</p>
+            <p><strong>Valid:</strong> {{ result.valid }}</p>
+            <p><strong>Country:</strong> {{ result.country_name }}</p>
+            <p><strong>Carrier:</strong> {{ result.carrier }}</p>
+            <p><strong>Line Type:</strong> {{ result.line_type }}</p>
+        </div>
+    {% endif %}
+
+</body>
+</html>
